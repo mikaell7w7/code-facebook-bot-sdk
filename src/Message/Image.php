@@ -2,11 +2,10 @@
 
 namespace CodeBot\Message;
 
-
-class Text implements Message
+class Image implements Message
 {
     private $recipientId;
-
+    
     public function __construct(string $recipientId)
     {
         $this->recipientId = $recipientId;
@@ -18,8 +17,12 @@ class Text implements Message
                 'id' => $this->recipientId
             ],
             'message' => [
-                'text' => 'Oiii',
-                'metadata' => 'DEVELOPER_DEFINED_METADATA'
+                'attachment' => [
+                    'type' => 'image',
+                    'payload' => [
+                        'ulr' => $messageText
+                    ]
+                ]
             ]
             ];
     }
